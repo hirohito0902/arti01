@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaperController; 
-use App\Http\Controllers\BookshelfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +19,9 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/papers', [PaperController::class, 'index']);
-Route::get('/bookshelves', [BookshelfController::class, 'index']);
+/*Route::get('/papers', [PaperController::class, 'index']);*/
+
+Route::get('/', [PaperController::class, 'index']);
+Route::get('/papers/bookshelf', [PaperController::class, 'bookshelf']);
+Route::get('/papers/search', [PaperController::class, 'search']);
+Route::get('/papers/submission', [PaperController::class, 'submission']);
