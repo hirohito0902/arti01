@@ -10,15 +10,16 @@
       
     </head>
     <body class="antialiased">
-        <h1>home</h1>
+        <h1>paper share site</h1>
         <div class='posts'>
             <div class='post'>
-                <h2 class='title'>Title</h2>
+                <h2 class='title'>home</h2>
                 <p class='body'>This is a sample body.</p>
             </div>
         </div>
         <a href='/papers/bookshelf'>bookshelf</a>
         <a href='/papers/search'>search</a>
         <a href='/papers/submission'>submission</a>
+        <a href='/papers/register'>register</a>
     </body>
 </html>

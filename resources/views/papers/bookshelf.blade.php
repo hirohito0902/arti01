@@ -13,8 +13,14 @@
         <h1>bookshelf</h1>
         <div class='posts'>
             <div class='post'>
-                <h2 class='title'>title</h2>
-                <p class='body'>This is a sample body.</p>
+                <h2 class='title'>papers list</h2>
+                <select name="paper">
+                    <option value="paper1">paper1</option>
+                    <option value="paper2">paper2</option>
+                    <option value="paper3">paper3</option>
+                    <option value="paper4">paper4</option>
+                    <option value="paper5">paper5</option>
+                </select>
             </div>
         </div>
         <div class='back'>[<a href='/'>back</a>]</div>

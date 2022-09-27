@@ -12,10 +12,14 @@
     <body class="antialiased">
         <h1>search</h1>
         <div class='posts'>
-            <div class='post'>
-                <h2 class='title'>title</h2>
-                <p class='body'>This is a sample body.</p>
+            <form action="/posts" method="POST">
+            @csrf
+            <div class="title">
+                <h2>search paper</h2>
+                <input type="text" name="post[title]" placeholder="input search words"/>
             </div>
+            <input type="submit" value="store"/>
+           </form>
         </div>
         <div class='back'>[<a href='/'>back</a>]</div>
     </body>

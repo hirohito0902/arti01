@@ -25,3 +25,4 @@ Route::get('/', [PaperController::class, 'index']);
 Route::get('/papers/bookshelf', [PaperController::class, 'bookshelf']);
 Route::get('/papers/search', [PaperController::class, 'search']);
 Route::get('/papers/submission', [PaperController::class, 'submission']);
+Route::get('/papers/register', [PaperController::class, 'register']);

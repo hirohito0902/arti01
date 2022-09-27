@@ -8,13 +8,14 @@
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     </head>
     <body class="antialiased">
-        <h1>submission</h1>
+        <h1>register</h1>
         <div class='posts'>
             <form action="/posts" method="POST">
             @csrf
             <div class="title">
-                <h2>paper submission</h2>
-                <input type="text" name="post[title]" placeholder="please submit your paper"/>
+                <h2>user registration</h2>
+                <input type="text" name="post[title]" placeholder="your e-mail address"/>
+                <input type="text" name="post[title]" placeholder="your password"/>
             </div>
             <input type="submit" value="store"/>
            </form>

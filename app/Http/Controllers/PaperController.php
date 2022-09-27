@@ -29,5 +29,10 @@ class PaperController extends Controller
     {
         return view('papers/submission');
     }
+    
+    public function register()
+    {
+        return view('papers/register');
+    }
 }
 
