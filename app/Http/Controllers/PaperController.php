@@ -24,15 +24,32 @@ class PaperController extends Controller
     {
         return view('papers/search');
     }
-    
+    /*
     public function submission()
     {
         return view('papers/submission');
     }
-    
+    */
     public function register()
     {
         return view('papers/register');
+    }
+    
+    
+    public function upload() {
+        return view('papers/submission');
+    }
+
+    public function action(Request $request) {
+        $request->validate([
+            'upload_file' => 'required'
+        ]);
+
+                // storage/app/upfiles配下にアップロード
+        $request->upload_file->store('upfiles');
+
+        echo "upload success";
+        exit;
     }
 }
 
