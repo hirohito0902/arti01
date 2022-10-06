@@ -13,13 +13,24 @@ use App\Http\Controllers\PaperController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/', function () {
+
+/*Route::get('/', function () {
     return view('welcome');
 });
 */
 
-/*Route::get('/papers', [PaperController::class, 'index']);*/
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+/*Route::get('/', [PaperController::class, 'index'])->name('index');*/
+
+
+
+Route::get('/papers', [PaperController::class, 'index']);
 
 Route::get('/', [PaperController::class, 'index']);
 Route::get('/papers/bookshelf', [PaperController::class, 'bookshelf']);

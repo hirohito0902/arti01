@@ -51,5 +51,11 @@ class PaperController extends Controller
         echo "upload success";
         exit;
     }
+    
+    public function redirectPath()
+    {
+        return '/';
+        //例）return 'costs/index';
+    }
 }
 
