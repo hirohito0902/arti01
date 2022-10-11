@@ -32,7 +32,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/papers', [PaperController::class, 'index']);
 
-Route::get('/', [PaperController::class, 'index']);
+Route::get('/', [PaperController::class, 'logout']);
 Route::get('/papers/bookshelf', [PaperController::class, 'bookshelf']);
 Route::get('/papers/search', [PaperController::class, 'search']);
 /*Route::get('/papers/submission', [PaperController::class, 'submission']);*/
@@ -41,3 +41,4 @@ Route::get('/papers/register', [PaperController::class, 'register']);
 Route::get('/papers/submission', [PaperController::class, 'upload'])->name('file_upload.upload');
 Route::get('/papers/submission/action', [PaperController::class, 'action']);
 Route::post('/papers/submission/action', [PaperController::class, 'action'])->name('file_upload.action');
+

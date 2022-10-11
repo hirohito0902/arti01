@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<x-app-layout>
+    <x-slot name="header">
+        　INDEX
+    </x-slot>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -23,3 +27,4 @@
         <a href='/papers/register'>register</a>
     </body>
 </html>
+</x-app-layout>

@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<x-app-layout>
+    <x-slot name="header">
+        　INDEX
+    </x-slot>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -27,6 +31,7 @@
                 <button type="submit" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">送信</button>
             </div>
         </form>
-        <div class='back'>[<a href='/'>back</a>]</div>
+        <div class='back'>[<a href='/papers'>back</a>]</div>
     </body>
 </html>
+</x-app-layout>

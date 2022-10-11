@@ -52,10 +52,10 @@ class PaperController extends Controller
         exit;
     }
     
-    public function redirectPath()
+    public function logout()
     {
-        return '/';
-        //例）return 'costs/index';
+        return view('/papers/logout');
+       //blade内で使う変数'posts'と設定。'posts'の中身にgetを使い、インスタンス化した$postを代入。
     }
 }
 

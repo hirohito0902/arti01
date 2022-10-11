@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<x-app-layout>
+    <x-slot name="header">
+        　INDEX
+    </x-slot>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -20,6 +24,7 @@
             <input type="submit" value="store"/>
            </form>
         </div>
-        <div class='back'>[<a href='/'>back</a>]</div>
+        <div class='back'>[<a href='/papers'>back</a>]</div>
     </body>
 </html>
+</x-app-layout>
