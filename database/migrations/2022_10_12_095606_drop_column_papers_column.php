@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('papers', function (Blueprint $table) {
-            $table->id();
-            $table->string('title', 50);
-            $table->string('author', 50);
-            $table->string('year', 50);
-            $table->string('review', 50);
-            $table->string('path',50);
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::table('papers', function (Blueprint $table) {
+            $table->dropColumn('author');
+            $table->dropColumn('year');
+            $table->dropColumn('review');
         });
     }
 
@@ -32,6 +27,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('papers');
+        Schema::table('papers', function (Blueprint $table) {
+            //
+        });
     }
 };

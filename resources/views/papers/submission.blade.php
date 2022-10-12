@@ -6,7 +6,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>Paper</title>
+        <title>Paper submission</title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -31,6 +31,29 @@
                 <button type="submit" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">送信</button>
             </div>
         </form>
+        
+        <form action="/posts" method="POST">
+            @csrf
+            <div class="title">
+                <h3>Title</h3>
+                <input type="text" name="paper[title]" placeholder="タイトル"/>
+            </div>
+            <div class="author">
+                <h3>Body</h3>
+                <input type="text" name="paper[author]" placeholder="著者"/>
+            </div>
+            <div class="year">
+                <h3>Title</h3>
+                <input type="text" name="paper[year]" placeholder="年度"/>
+            </div>
+            <div class="year">
+                <h3>review</h3>
+                <input type="text" name="paper[review]" placeholder="評価"/>
+            </div>
+            <input type="submit" value="store"/>
+        </form>
+        <div class="footer">
+            
         <div class='back'>[<a href='/papers'>back</a>]</div>
     </body>
 </html>

@@ -42,3 +42,7 @@ Route::get('/papers/submission', [PaperController::class, 'upload'])->name('file
 Route::get('/papers/submission/action', [PaperController::class, 'action']);
 Route::post('/papers/submission/action', [PaperController::class, 'action'])->name('file_upload.action');
 
+Route::post('/posts', [PaperController::class, 'store']);
+
+Route::get('/papers/detail', [PaperController::class, 'detail']);
+Route::get('/papers/detail/1', [PaperController::class, 'showRedirect']);

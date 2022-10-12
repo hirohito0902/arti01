@@ -45,17 +45,33 @@ class PaperController extends Controller
             'upload_file' => 'required'
         ]);
 
+        $dir = 'sample';
                 // storage/app/upfiles配下にアップロード
-        $request->upload_file->store('upfiles');
-
-        echo "upload success";
-        exit;
+        $file_name =$request->upload_file->getClientOriginalName();
+        $request->upload_file->storeAs('public/', $file_name);
+        
+        $paper = new Paper();
+        $paper->title = $file_name;
+        $paper->path = '/storage/' . $file_name;
+        $paper->save();
+        
+        return redirect('/papers/submission');
     }
     
     public function logout()
     {
         return view('/papers/logout');
        //blade内で使う変数'posts'と設定。'posts'の中身にgetを使い、インスタンス化した$postを代入。
+    }
+    
+    public function detail(Paper $paper)
+    {
+        return view('papers/detail')->with(['papers' => $paper->get()]);
+    }
+    
+    public function showRedirect()
+    {
+        return redirect(asset('storage/88lkgWEKU5Va66URtPbJ58xb0we9HilDG7BRTBiR.pdf'));
     }
 }
 
