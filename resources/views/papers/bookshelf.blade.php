@@ -15,17 +15,35 @@
     </head>
     <body class="antialiased">
         <h1 class="text-red-600">bookshelf</h1>
-        <div class='posts'>
-            <div class='post'>
-                <h2 class='title'>papers list</h2>
-                <select name="paper">
-                    <option value="paper1">paper1</option>
-                    <option value="paper2">paper2</option>
-                    <option value="paper3">paper3</option>
-                    <option value="paper4">paper4</option>
-                    <option value="paper5">paper5</option>
-                </select>
-            </div>
+        @if( Auth::check() )
+        @if (count((array)$papers) > 0)
+        <div class="card-body">
+            
+                    <!-- テーブルヘッダ -->
+                    <thead>
+                        <th>お気に入り一覧</th>
+                        <th>&nbsp;</th>
+                    </thead>
+                    <!-- テーブル本体 -->
+                    <tbody>
+                        @foreach ($papers as $paper)
+                            <tr>
+                                <!-- 投稿タイトル -->
+                                <td class="table-text">
+                                    <div>{{ $paper->title }}</div>
+                                </td>
+                                 <!-- 投稿詳細 -->
+                                <td class="table-text">
+                                    <div>{{ $paper->desc }}</div>
+                                </td>
+                                <!-- 投稿者名の表示 -->
+                            </tr>
+                        @endforeach
+                    </tbody>
+        </div>		
+    @endif
+    @endif
+
         </div>
         <div class='back'>[<a href='/papers'>back</a>]</div>
     </body>

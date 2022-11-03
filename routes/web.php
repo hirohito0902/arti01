@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaperController; 
+use App\Http\Controllers\BookmarkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +34,8 @@ require __DIR__.'/auth.php';
 Route::get('/papers', [PaperController::class, 'index']);
 
 Route::get('/', [PaperController::class, 'logout']);
-Route::get('/papers/bookshelf', [PaperController::class, 'bookshelf']);
-Route::get('/papers/search', [PaperController::class, 'search']);
+/*Route::get('/papers/bookshelf', [PaperController::class, 'bookshelf']);*/
+Route::get('/papers/search', [PaperController::class, 'search'])->name('papers.search');
 /*Route::get('/papers/submission', [PaperController::class, 'submission']);*/
 Route::get('/papers/register', [PaperController::class, 'register']);
 
@@ -44,5 +45,20 @@ Route::post('/papers/submission/action', [PaperController::class, 'action'])->na
 
 Route::post('/posts', [PaperController::class, 'store']);
 
-Route::get('/papers/detail', [PaperController::class, 'detail']);
-Route::get('/papers/detail/1', [PaperController::class, 'showRedirect']);
+
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/papers/bookshelf', [PaperController::class, 'bookmark_papers'])->name('bookmarks');
+    /*Route::get('/home', [HomeController::class, 'index'])->name('home');*/
+    Route::resource('/papers/detail', PaperController::class);
+    Route::post('/papers/{paper}/bookmark', [BookmarkController::class, 'store'])->name('bookmark.store');
+    Route::delete('/papers/{paper}/unbookmark', [BookmarkController::class, 'destroy'])->name('bookmark.destroy');
+
+});
+
+
+
+Route::get('/papers/detail', [PaperController::class, 'detail'])->name('papers.detail');
+Route::get('/papers/{paper}', [PaperController::class, 'show']);
+
+Route::delete('/papers/{paper}', [PaperController::class,'delete']);

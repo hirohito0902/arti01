@@ -15,16 +15,24 @@
     </head>
     <body class="antialiased">
         <h1>search</h1>
-        <div class='posts'>
-            <form action="/posts" method="POST">
-            @csrf
-            <div class="title">
-                <h2>search paper</h2>
-                <input type="text" name="post[title]" placeholder="input search words"/>
-            </div>
-            <input type="submit" value="store"/>
-           </form>
-        </div>
+
+<form method="GET" action="{{ route('papers.search') }}">
+    <input type="search" placeholder="ユーザー名を入力" name="search" value="@if (isset($search)) {{ $search }} @endif">
+    <div>
+
+        <button type="submit">検索</button>
+        <button>
+            <a href="{{ route('papers.search') }}" class="text-white">
+                クリア
+            </a>
+        </button>
+    </div>
+</form>
+
+@foreach($papers as $paper)
+    <a href='/papers/{{ $paper->id }}'>{{ $paper->title }}</a>
+@endforeach
+
         <div class='back'>[<a href='/papers'>back</a>]</div>
     </body>
 </html>
