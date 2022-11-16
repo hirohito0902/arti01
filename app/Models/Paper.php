@@ -19,9 +19,10 @@ class Paper extends Model
     
     protected $fillable = [
         'title',
-        /*'author',
+        'author',
         'year',
-        'review',*/
+        'degree',
+        'category',
         'path',
         ];
 }

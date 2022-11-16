@@ -25,7 +25,7 @@
                     </div>
                 </header>
             @endif
-            <li><a class="tab-item{{ Request::is('bookmarks') ? ' active' : ''}}" href="{{ route('bookmarks') }}">ブックマーク</a></li>
+
 
             <!-- Page Content -->
             <main>

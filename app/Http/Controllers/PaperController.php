@@ -20,7 +20,7 @@ class PaperController extends Controller
     
     public function bookshelf()
     {
-        return view('papers/bookshelf');
+        return view('papers/bookshelf')->with(['papers' => $paper->getPaginateByLimit()]);
     }
     
     /*public function search()
@@ -46,13 +46,19 @@ class PaperController extends Controller
 
     public function action(Request $request) {
         $request->validate([
-            'upload_file' => 'required'
+            'upload_file' => 'required',
+            'title' => 'required|string|max:100',
+            'author' => 'required|string|max:100',
+            'year' => 'required|string|max:100',
+            'degree' => 'required|string|max:100',
+            'category' => 'required|string|max:100'
         ]);
 
         $dir = 'sample';
                 // storage/app/upfiles配下にアップロード
         $file_name =$request->upload_file->getClientOriginalName();
         /*$request->upload_file->storeAs('public/', $file_name);*/
+        
         
         /*$paper = new Paper();
         $paper->title = $file_name;
@@ -61,7 +67,13 @@ class PaperController extends Controller
         
        
         $paper = new Paper();
-        $paper->title = $file_name;
+        /*$paper->title = $file_name;*/
+        $paper->title = $request->input('title');
+        $paper->author = $request->input('author');
+        $paper->year = $request->input('year');
+        $paper->degree = $request->input('degree');
+        $paper->category = $request->input('category');
+ 
         $path = Storage::disk('s3')->putFile('/test1', $request->upload_file, 'public');
         $paper->path = Storage::disk('s3')->url($path);
         $paper->save();
@@ -96,7 +108,7 @@ class PaperController extends Controller
     public function search(Request $request)
     {
         // ユーザー一覧をページネートで取得
-        $papers = Paper::paginate(20);
+        $papers = Paper::paginate(10);
         
         $search = $request->input('search');
 
@@ -121,7 +133,7 @@ class PaperController extends Controller
             $users = $query->paginate(20);*/
             $query->where('title', 'LIKE', "%{$search}%");
         }
-        $papers = $query->get();
+        $papers = $query->paginate(10);
 
         // ビューにusersとsearchを変数として渡す
         return view('papers.search')
