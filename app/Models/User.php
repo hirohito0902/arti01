@@ -41,4 +41,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
+    
+    public function bookmark_papers()
+    {
+        return $this->belongsToMany(Paper::class, 'bookmarks', 'user_id', 'paper_id');
+    }
+    
+    public function is_bookmark($paperId)
+    {
+        return $this->bookmarks()->where('paper_id', $paperId)->exists();
+    }
 }
